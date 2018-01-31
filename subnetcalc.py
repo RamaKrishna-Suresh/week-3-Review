@@ -31,12 +31,17 @@ class IP4Address:
         list1 = []
         for x in list_arg:
             list1.append((255-x))
-        print(list1)
+        return list1
+
+    def getNetwork(self):
+        num_subnets = 2**(self.mask%8)
+        print(num_subnets)
+        
 
 
 
 
-
-ipv4 = IP4Address([10,0,0,0],26)
+ipv4 = IP4Address([192,168,1,0],26)
 list_netmask = (ipv4.getMask())
 list_wildcard = ipv4.getWildcard(list_netmask)
+ipv4.getNetwork()
