@@ -34,14 +34,26 @@ class IP4Address:
         return list1
 
     def getNetwork(self):
+        list_octet = [256,128,64,32,16,8,4,2]
+        sub_diff = self.mask%8
         num_subnets = 2**(self.mask%8)
-        print(num_subnets)
-        
+        list_network = self.ip_address
+        magic_num = list_octet[sub_diff]
+        x = magic_num
+        while magic_num<=256:
+            if int(list_network[3]) < magic_num :
+                list_network[3]=magic_num-x
+                break
+            magic_num=magic_num+x
+        return(list_network)
 
 
 
 
-ipv4 = IP4Address([192,168,1,0],26)
+
+
+ipv4 = IP4Address([192,168,45,252],26)
 list_netmask = (ipv4.getMask())
 list_wildcard = ipv4.getWildcard(list_netmask)
-ipv4.getNetwork()
+list_network = ipv4.getNetwork()
+
