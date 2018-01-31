@@ -25,7 +25,18 @@ class IP4Address:
             list_result[i] = 255
         if(sum_diff<255):
                 list_result[3]=255 - (sum_diff)
-        print(list_result)
+        return(list_result)
+
+    def getWildcard(self,list_arg):
+        list1 = []
+        for x in list_arg:
+            list1.append((255-x))
+        print(list1)
+
+
+
+
 
 ipv4 = IP4Address([10,0,0,0],26)
-ipv4.getMask()
+list_netmask = (ipv4.getMask())
+list_wildcard = ipv4.getWildcard(list_netmask)
