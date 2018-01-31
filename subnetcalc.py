@@ -40,6 +40,7 @@ class IP4Address:
     def getNetwork(self):
         list_octet = [256,128,64,32,16,8,4,2]
         sub_diff = self.mask%8
+        #have to write a common function for diff octets
         num_subnets = 2**(self.mask%8)
         list_network = self.ip_address
         magic_num = list_octet[sub_diff]
